@@ -1,0 +1,32 @@
+<h1><%= @restaurant.name %></h1>
+
+<h2>Address: <%= @restaurant.address %></h2>
+<% if !@restaurant.phone_number.empty? %>
+ <p>Phone Number: <%= @restaurant.phone_number %></p>
+<% end %>
+<p>Category: <%= @restaurant.category.capitalize %></p>
+
+<%= link_to "Back", restaurants_path %>
+
+<h3>Reviews:</h3>
+
+<% if @restaurant.reviews.empty? %>
+  <p>There are no reviews</p>
+<% end %>
+
+<% @restaurant.reviews.each do |review| %>
+  <p>
+    <% 5.times do |i| %>
+      <% if i <= review.rating  %>
+        <i class="fa fa-star"></i>
+      <% else %>
+        <i class="fa fa-star-o"></i>
+      <% end %>
+    <% end %>
+  </p>
+  <p><%= review.content %> </p>
+  <hr>
+<% end %>
+
+<h2>Leave a review:</h2>
+<%= render "reviews/form" %>

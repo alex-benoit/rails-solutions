@@ -1,0 +1,14 @@
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <ul class="list-unstyled" style="color:red">
+      <% @review.errors.full_messages.each do |message| %>
+        <li>ERROR: <%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :content %>
+  <%= f.input :rating, collection: (0..5).to_a, selected: 0%>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,12 @@
+<h1>Creppy Task Manager</h1>
+
+<%= link_to "Add a new task", new_task_path %>
+
+<h2>Tasks:</h2>
+<% @tasks.each do |task|  %>
+  <h3><%= link_to task.name, task_path(task) %>
+  <%= link_to "[Edit]", edit_task_path(task) %>
+  <%= link_to "[Delete]", task_path(task), method: :delete%>
+  </h3>
+<% end %>
+
