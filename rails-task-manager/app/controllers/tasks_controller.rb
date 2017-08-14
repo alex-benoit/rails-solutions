@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+
   def index
     @tasks = Task.all
   end
@@ -12,7 +13,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    Task.create(task_params)
+    new_task = Task.new(task_params)
+    new_task.save
     redirect_to tasks_path
   end
 

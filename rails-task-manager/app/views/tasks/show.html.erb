@@ -1,9 +1,7 @@
 <h1><%= @task.name %></h1>
+<h3>Done: <%= @task.done ? 'yes' : 'no' %></h3>
+<p>Created At: <%= @task.created_at %> / Updated At: <%= @task.updated_at %></p>
 
-<h3>Done: <%= @task.done %></h3>
-
-<h3>Created At: <%= @task.created_at %></h3>
-
-<h3>Updated At: <%= @task.updated_at %></h3>
-
+<%= link_to 'Edit', edit_task_path(@task) %> -
+<%= link_to 'Delete', task_path(@task), method: :delete %> -
 <%= link_to 'Back to tasks list', tasks_path %>
